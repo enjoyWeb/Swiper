@@ -67,7 +67,7 @@ swiper2.0：http://swiper2.swiper.com.cn/
 </div>
 ```
 ###2、demo
-* [Swiper焦点图滚动demo](http://192.168.14.97:8080/plugin/swiper)
+* [Swiper焦点图滚动demo](http://192.168.14.97:8080/acc/plugin/swiper)
 
 ##配置和API
 ###1、配置
