@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/swiper-thumbs.css">
 </head>
 <body>
-<div class="swiper-container" style="width:50%;float:left;">
+<div class="swiper-container" id="swiper-container1" style="width:50%;float:left;">
 	<a class="arrow-left" href="#"></a>
 	<a class="arrow-right" href="#"></a>
 	<div class="swiper-content">
@@ -282,7 +282,7 @@
 		</div>
 	</div>
 </div>
-<div class="swiper-container" style="width:50%;float:right;">
+<div class="swiper-container dirVertical" id="swiper-container2" style="width:45%;float:left;margin:200px auto;">
 	<a class="arrow-left" href="#"></a>
 	<a class="arrow-right" href="#"></a>
 	<div class="swiper-content">
@@ -561,7 +561,13 @@
 <script src="js/idangerous.swiper-2.0.min.js"></script>
 <script src="js/swiper-thumbs.js"></script>
 <script type="text/javascript">
-	$(".swiper-container").swiperThumbs();
+	$("#swiper-container1").swiperThumbs({
+		mode : 'horizontal'
+	});
+	$("#swiper-container2").swiperThumbs({
+		mode : 'vertical',
+		height: '570px'
+	});
 </script>
 </body>
 </html>

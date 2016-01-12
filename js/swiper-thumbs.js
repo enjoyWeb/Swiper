@@ -6,7 +6,13 @@
 	        	$swiperContent = $($this.find('.swiper-content')),
 	        	$swiperNav = $($this.find('.swiper-nav')),
 	        	$swiperLeft = $($this.find('.arrow-left')),
-	        	$swiperRight = $($this.find('.arrow-right'));
+	        	$swiperRight = $($this.find('.arrow-right')),
+                o = $.meta ? $.extend({}, opts, $this.data()) : opts,
+                mode = "'" + o.mode + "'",
+                h = o.height,
+                w;
+            //if(o.mode == 'vertical') $this.addClass('dirVertical');
+            if(o.mode == 'vertical') w = $swiperContent.width() - $swiperNav.width();
             var contentSwiper = $swiperContent.swiper({
                 onSlideChangeStart: function() {
                     $.fn.swiperThumbs.updateNavPosition($swiperContent,$swiperNav,contentSwiper,navSwiper);
@@ -18,11 +24,12 @@
             var navSwiper = $swiperNav.swiper({
                 visibilityFullFit: true,
                 slidesPerView: 'auto',
+                mode: mode,
                 onSlideClick: function() {
                     contentSwiper.swipeTo(navSwiper.clickedSlideIndex);
                 }
             });
-            $.fn.swiperThumbs.setContentSize($swiperContent,$swiperNav);
+            $.fn.swiperThumbs.setContentSize($this,$swiperNav,w,h);
             $swiperLeft.click(function() {
                 contentSwiper.swipePrev();
                 $.fn.swiperThumbs.updateNavPosition($swiperContent,$swiperNav,contentSwiper,navSwiper);
@@ -32,7 +39,7 @@
                 $.fn.swiperThumbs.updateNavPosition($swiperContent,$swiperNav,contentSwiper,navSwiper);
             });
 		    $(window).resize(function() {
-		        $.fn.swiperThumbs.setContentSize($swiperContent,$swiperNav);
+		        $.fn.swiperThumbs.setContentSize($this,$swiperNav,w,h);
 		    });
         });
     };
@@ -51,7 +58,11 @@
             };
         };
     };
-    $.fn.swiperThumbs.setContentSize = function(c,n) {
-        c.css({ height: $(window).height() - n.height() });
+    $.fn.swiperThumbs.setContentSize = function(c,n,w,h) {
+        c.css({ height: h,width: w });
+    };
+    $.fn.swiperThumbs.defaults = {
+        mode: 'horizontal',
+        height: '100%'
     };
 })(jQuery);

@@ -170,6 +170,45 @@ body {
 	text-overflow:ellipsis;
 	white-space: nowrap;
 }
+.dirVertical {
+	padding-right: 80px;
+}
+.dirVertical .swiper-content {
+	position: relative;
+}
+.dirVertical .arrow-right {
+	right: 80px;
+}
+.dirVertical .swiper-nav {
+	height: 100%;
+	width: 80px;
+	position: absolute;
+	left: inherit;
+	right: 0;
+	bottom: 0;
+	background: #ddd;
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.5) inset;
+}
+.dirVertical .swiper-nav .swiper-slide {
+	height: 80px;
+}
+.dirVertical .swiper-nav .angle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid transparent;
+    position: absolute;
+    left: 4px;
+    margin-top: -3px;
+    top: 50%;
+    opacity: 0;
+    border-left: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+}
+.dirVertical .swiper-nav .active-nav .angle {
+    opacity: 1;
+}
 
 .order-number {
 	position:absolute;
