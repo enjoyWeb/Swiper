@@ -28,39 +28,30 @@ swiper2.0：http://swiper2.swiper.com.cn/
 * 在页面上添加代码
 
 ```javascript
-<div class="swiper-container">
+//默认缩略图是在底部
+<div class="swiper-container" id="swiper-container1">
     <div>
         <a class="arrow-left" href="#"></a>
         <a class="arrow-right" href="#"></a>
     </div>
 	<div class="swiper-content">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<div class="inner">
-					<a href="img/1.jpg" target="_blank" title="图片1">查看原图</a>
-					<img class="movie-pic" src="img/1.jpg" height="150" width="150" alt="">
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="inner">
-					<a href="img/2.jpg" title="图片2">查看原图</a>
-					<img class="movie-pic" src="img/2.jpg" height="150" width="150" alt="">
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
+		...
 	</div>
 	<div class="swiper-nav">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide active-nav">
-				<span class="angle"></span>
-				<img num="1" src="img/1.jpg" alt="">
-			</div>
-			<div class="swiper-slide">
-				<span class="angle"></span>
-				<img num="2" src="img/2.jpg" alt="">
-			</div>
-		</div>
+		...
+	</div>
+</div>
+//缩略图在右侧
+<div class="swiper-container dirVertical" id="swiper-container2">//要加dirVertical样式名
+    <div>
+        <a class="arrow-left" href="#"></a>
+        <a class="arrow-right" href="#"></a>
+    </div>
+	<div class="swiper-content">
+		...
+	</div>
+	<div class="swiper-nav">
+		...
 	</div>
 </div>
 ```
@@ -70,7 +61,15 @@ swiper2.0：http://swiper2.swiper.com.cn/
 ##配置和API
 ###1、配置
 ```javascript
-$(".swiper-container").swiperThumbs();
+//mode设置缩略图位置
+$("#swiper-container1").swiperThumbs({
+	mode : 'horizontal'
+});
+//height设置容器高度
+$("#swiper-container2").swiperThumbs({
+	mode : 'vertical',
+	height: '570px'
+});
 ```
 ###2、API
 * [Swiper2.0的API详细参数地址](http://swiper2.swiper.com.cn/api/index.html)
