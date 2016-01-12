@@ -11,20 +11,18 @@ swiper2.0：http://swiper2.swiper.com.cn/
 ##样例：
 
 ###1、使用步骤
-* 引入样式文件（idangerous.swiper.css，normalize.css，movies-app.css）
+* 引入样式文件（swiper-thumbs.css）
 
 ```javascript
-<link rel="stylesheet" href="css/idangerous.swiper.css">
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/movies-app.css">
+<link rel="stylesheet" href="css/swiper-thumbs.css">
 ```
 * 在页面头部引用Jquery库：jquery.min.js；
-* 以及Swiper的实现代码：idangerous.swiper-2.0.min.js，movies-app.js。
+* 以及Swiper的实现代码：idangerous.swiper-2.0.min.js，movies-thumbs.js。
 
 ```javascript
 <script src="js/jquery.min.js"></script>
 <script src="js/idangerous.swiper-2.0.min.js"></script>
-<script src="js/movies-app.js"></script>
+<script src="js/swiper-thumbs.js"></script>
 ```
 
 * 在页面上添加代码
@@ -72,11 +70,7 @@ swiper2.0：http://swiper2.swiper.com.cn/
 ##配置和API
 ###1、配置
 ```javascript
-这里使用的是swiper2.0，配置方式和swiper3.0不一致，这里的具体配置，查看movies-app.js文件
-var contentSwiper = new Swiper('.swiper-content',{
-    autoplay : 5000,//可选选项，自动滑动
-    loop : true,//可选选项，开启循环
-})
+$(".swiper-container").swiperThumbs();
 ```
 ###2、API
 * [Swiper2.0的API详细参数地址](http://swiper2.swiper.com.cn/api/index.html)
