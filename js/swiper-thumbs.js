@@ -2,17 +2,22 @@
     $.fn.swiperThumbs = function(options) {
         var opts = $.extend({}, $.fn.swiperThumbs.defaults, options);
         return this.each(function() {
-	        var $this = $(this),
-	        	$swiperContent = $($this.find('.swiper-content')),
-	        	$swiperNav = $($this.find('.swiper-nav')),
-	        	$swiperLeft = $($this.find('.arrow-left')),
-	        	$swiperRight = $($this.find('.arrow-right')),
+            var $this = $(this),
+                $swiperContent = $($this.find('.swiper-content')),
+                $swiperNav = $($this.find('.swiper-nav')),
+                $swiperLeft = $($this.find('.arrow-left')),
+                $swiperRight = $($this.find('.arrow-right')),
                 o = $.meta ? $.extend({}, opts, $this.data()) : opts,
-                mode = o.mode,
+                dir = o.direction,
                 h = o.height,
+                slides = o.navSlidesPerView,
                 w;
-            //if(o.mode == 'vertical') $this.addClass('dirVertical');
-            if(o.mode == 'vertical') w = $swiperContent.width() - $swiperNav.width();
+            //if(o.direction == 'vertical') $this.addClass('dirVertical');
+            if(dir == 'vertical') {
+                w = $swiperContent.width() - $swiperNav.width();
+                slides = 'auto';
+            }
+            console.log(dir);
             var contentSwiper = $swiperContent.swiper({
                 onSlideChangeStart: function() {
                     $.fn.swiperThumbs.updateNavPosition($swiperContent,$swiperNav,contentSwiper,navSwiper);
@@ -23,8 +28,8 @@
             });
             var navSwiper = $swiperNav.swiper({
                 visibilityFullFit: true,
-                slidesPerView: 'auto',
-                mode: mode,
+                slidesPerView: slides,
+                mode: dir,
                 onSlideClick: function() {
                     contentSwiper.swipeTo(navSwiper.clickedSlideIndex);
                 }
@@ -38,15 +43,15 @@
                 contentSwiper.swipeNext();
                 $.fn.swiperThumbs.updateNavPosition($swiperContent,$swiperNav,contentSwiper,navSwiper);
             });
-		    $(window).resize(function() {
-		        $.fn.swiperThumbs.setContentSize($this,$swiperNav,w,h);
-		    });
+            $(window).resize(function() {
+                $.fn.swiperThumbs.setContentSize($this,$swiperNav,w,h);
+            });
         });
     };
     $.fn.swiperThumbs.updateNavPosition = function(c,n,cs,ns) {
-    	var allActiveNav = n.find('.active-nav'),
-    		allSlide = n.find('.swiper-slide'),
-        	activeNav = $(allSlide).eq(cs.activeIndex);
+        var allActiveNav = n.find('.active-nav'),
+            allSlide = n.find('.swiper-slide'),
+            activeNav = $(allSlide).eq(cs.activeIndex);
         $(allActiveNav).removeClass('active-nav');
         $(activeNav).addClass('active-nav');
         if (!activeNav.hasClass('swiper-slide-visible')) {
@@ -59,10 +64,10 @@
         };
     };
     $.fn.swiperThumbs.setContentSize = function(c,n,w,h) {
-        c.css({ height: h,width: w });
+        c.css({ height: h});
     };
     $.fn.swiperThumbs.defaults = {
-        mode: 'horizontal',
-        height: '100%'
+        direction: 'horizontal',
+        navSlidesPerView: 'auto'
     };
 })(jQuery);
