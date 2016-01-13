@@ -8,7 +8,7 @@
 	        	$swiperLeft = $($this.find('.arrow-left')),
 	        	$swiperRight = $($this.find('.arrow-right')),
                 o = $.meta ? $.extend({}, opts, $this.data()) : opts,
-                mode = "'" + o.mode + "'",
+                mode = o.mode,
                 h = o.height,
                 w;
             //if(o.mode == 'vertical') $this.addClass('dirVertical');
