@@ -29,7 +29,7 @@ swiper2.0：http://swiper2.swiper.com.cn/
 
 ```javascript
 //默认缩略图是在底部
-<div class="swiper-container" id="swiper-container1">
+<div class="swiper-container dirVertical" id="swiper-container1">//要加dirVertical样式名
     <div>
         <a class="arrow-left" href="#"></a>
         <a class="arrow-right" href="#"></a>
@@ -42,7 +42,7 @@ swiper2.0：http://swiper2.swiper.com.cn/
 	</div>
 </div>
 //缩略图在右侧
-<div class="swiper-container dirVertical" id="swiper-container2">//要加dirVertical样式名
+<div class="swiper-container" id="swiper-container2">
     <div>
         <a class="arrow-left" href="#"></a>
         <a class="arrow-right" href="#"></a>
@@ -61,14 +61,15 @@ swiper2.0：http://swiper2.swiper.com.cn/
 ##配置和API
 ###1、配置
 ```javascript
-//mode设置缩略图位置
+//direction设置缩略图位置
 $("#swiper-container1").swiperThumbs({
-	mode : 'horizontal'
+    direction : 'vertical',
+    navSlidesPerView : 10
 });
-//height设置容器高度
+//navSlidesPerView设置缩略图显示数量
 $("#swiper-container2").swiperThumbs({
-	mode : 'vertical',
-	height: '570px'
+	direction : 'horizontal',
+    navSlidesPerView : 15
 });
 ```
 ###2、API
